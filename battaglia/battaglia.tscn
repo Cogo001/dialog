@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw6epuevtabxi"]
+
+[ext_resource type="Script" uid="uid://bjw5rf4hvbp88" path="res://battaglia/battle.gd" id="1_tsuqy"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_tsuqy")

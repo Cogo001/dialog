@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnxu5lt37qrse"]
+
+[ext_resource type="StyleBox" uid="uid://vwlxs86l8vdh" path="res://textboxlayer.tres" id="2_2suey"]
+[ext_resource type="Script" uid="uid://b4h8n5kcyy73y" path="res://PanelContainer.gd" id="2_ni6nk"]
+
+[node name="textbox" type="CanvasLayer"]
+script = ExtResource("2_ni6nk")
+dialogPath = "res://test.json"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -116.0
+offset_right = 1146.0
+offset_bottom = -8.0
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("2_2suey")
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer"]
+layout_direction = 3
+layout_mode = 2
+bbcode_enabled = true
+
+[node name="Timer" type="Timer" parent="."]

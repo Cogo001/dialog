@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://x5ypxv4pblio"]
+
+[ext_resource type="Texture2D" uid="uid://dv5naj4ovmnvv" path="res://icon.svg" id="1_fvhl5"]
+[ext_resource type="PackedScene" uid="uid://chs8mqeo1oy0b" path="res://character_body_2d.tscn" id="1_iihks"]
+[ext_resource type="Script" uid="uid://c5oj6ly8epj0v" path="res://Npc.gd" id="3_hxjwu"]
+[ext_resource type="Script" uid="uid://crjau4ee4uvx3" path="res://oggetto.gd" id="4_b0b0j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l7fd"]
+size = Vector2(128.25, 123.125)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iijmh"]
+radius = 64.0312
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e5x86"]
+radius = 64.0078
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(526, 270)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_iihks")]
+
+[node name="Npc" type="StaticBody2D" parent="."]
+position = Vector2(358, -2)
+collision_layer = 3
+script = ExtResource("3_hxjwu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Npc"]
+position = Vector2(4, -33)
+texture = ExtResource("1_fvhl5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc"]
+position = Vector2(5, -34.4375)
+shape = SubResource("RectangleShape2D_8l7fd")
+debug_color = Color(1, 0.227451, 0, 0.419608)
+
+[node name="oggetto" type="StaticBody2D" parent="."]
+collision_layer = 3
+script = ExtResource("4_b0b0j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oggetto"]
+position = Vector2(-4, 191)
+shape = SubResource("CircleShape2D_iijmh")
+
+[node name="albero" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="albero"]
+position = Vector2(-71, -198)
+shape = SubResource("CircleShape2D_e5x86")

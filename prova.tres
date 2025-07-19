@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=4 format=3 uid="uid://bfjtlpjv3iuxq"]
+
+[ext_resource type="PackedScene" uid="uid://cqpb3ie51rwl5" path="res://dialogue/CustomProva/custom_prova.tscn" id="1_lqjfj"]
+[ext_resource type="Script" uid="uid://b0hgasr0wufyh" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_pdv24"]
+[ext_resource type="Script" uid="uid://b0p55qx1ttx6a" path="res://addons/dialogic/Resources/dialogic_style.gd" id="10_3lo28"]
+
+[resource]
+script = ExtResource("10_3lo28")
+name = "prova"
+base_scene = ExtResource("1_lqjfj")
+base_overrides = {}
+layers = Array[ExtResource("2_pdv24")]([])
+metadata/_latest_layer = -1
