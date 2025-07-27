@@ -3,10 +3,16 @@ extends CharacterBody2D
 
 
 var SPEED = 300.0
-signal dialogue
-var pos
+var can_move:bool=true  #dialogue
+
+func  _ready():
+	add_to_group("player")
+
 
 func _process(delta):
+	if !can_move:
+		return #annulla quallo che ce sotto
+	
 	#Movimento base
 	var movement= Vector2()
 	movement.x= Input.get_axis("ui_left","ui_right")
@@ -26,15 +32,3 @@ func _process(delta):
 
 	velocity= movement * SPEED
 	move_and_slide()
-
-
-func _input(event: InputEvent):
-	var collider = $RayCast2D.get_collider()
-	
-	if Dialogic.current_timeline != null:
-		return
-	
-	if collider != null and Input.is_action_just_released("ui_accept"):
-		set_process(false)
-		emit_signal("dialogue")
-		
