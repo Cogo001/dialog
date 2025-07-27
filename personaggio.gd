@@ -19,10 +19,7 @@ func _process(delta):
 	movement.y= Input.get_axis("ui_up","ui_down")
 	movement=movement.normalized()
 	
-	#RAYCAST 2D
-	if movement != Vector2.ZERO :
-		$RayCast2D.target_position=movement*64
-		$RayCast2D/Area2D.position=$RayCast2D.target_position
+
 	
 	
 	if Input.is_action_pressed("ui_x"):
