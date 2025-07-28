@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://x5ypxv4pblio"]
+[gd_scene load_steps=13 format=3 uid="uid://x5ypxv4pblio"]
 
 [ext_resource type="Texture2D" uid="uid://c022rs1aahi68" path="res://icon.svg" id="1_fvhl5"]
 [ext_resource type="PackedScene" uid="uid://chs8mqeo1oy0b" path="res://character_body_2d.tscn" id="1_iihks"]
 [ext_resource type="PackedScene" uid="uid://dah7ntl5dudo0" path="res://dialogue_area_2d.tscn" id="3_dfp5p"]
 [ext_resource type="Script" uid="uid://ioks06t7l122" path="res://dialogue_avanzato/resource_dialogue/DialogueExportResource.gd" id="4_640hd"]
 [ext_resource type="Script" uid="uid://6i72ifhxrr0o" path="res://dialogue_avanzato/resource_dialogue/DialogueTextResource.gd" id="5_kf8s6"]
+[ext_resource type="Script" uid="uid://cs47umobsy1im" path="res://dialogue_avanzato/resource_dialogue/DialogueFunctionResource.gd" id="6_kf8s6"]
+[ext_resource type="Script" uid="uid://djbemgb3jorfh" path="res://dialogue_avanzato/resource_dialogue/DialogueChoiceResource.gd" id="7_sbffi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8l7fd"]
 size = Vector2(128.25, 123.125)
@@ -15,7 +17,7 @@ speaker_name = ""
 speaker_img = ExtResource("1_fvhl5")
 speaker_img_Hframes = 1
 speaker_img_rest_frame = 0
-text = "ehi come stai?"
+text = "Questa sedia è abbastanza messa male meglio non toccarla prima che si rompa di più, altrimenti bisogna ripagare i danni con i soldi veri"
 text_speed = 18.0
 text_volume_db = 0
 text_volume_pitch_min = 0.85
@@ -38,6 +40,16 @@ text_volume_pitch_max = 1.15
 camera_position = Vector2(999.999, 999.999)
 camera_transition_time = 1.0
 metadata/_custom_type_script = "uid://6i72ifhxrr0o"
+
+[sub_resource type="Resource" id="Resource_kf8s6"]
+script = ExtResource("7_sbffi")
+speaker_name = ""
+speaker_img_Hframes = 1
+speaker_img_select_frame = 0
+text = "allora si o no?"
+choice_text = Array[String](["si", "no"])
+choice_function_call = Array[ExtResource("6_kf8s6")]([null, null])
+metadata/_custom_type_script = "uid://djbemgb3jorfh"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skr2o"]
 size = Vector2(108, 84)
@@ -64,7 +76,7 @@ debug_color = Color(1, 0.227451, 0, 0.419608)
 position = Vector2(571, 318)
 
 [node name="DialogueArea2D" parent="." instance=ExtResource("3_dfp5p")]
-dialogue = Array[ExtResource("4_640hd")]([SubResource("Resource_sbffi"), SubResource("Resource_k3alg")])
+dialogue = Array[ExtResource("4_640hd")]([SubResource("Resource_sbffi"), SubResource("Resource_k3alg"), SubResource("Resource_kf8s6")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueArea2D"]
 position = Vector2(708, 345)

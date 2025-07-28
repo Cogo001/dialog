@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 #Mostly mad Production dialogue system
 const DialogueButtonPreload=preload("res://dialogue_avanzato/dialogue_button.tscn")
 
@@ -133,10 +133,10 @@ func _choice_button_pressed(target_node:Node,wait_for_signal_to_continue:String)
 func _text_resource(i:DialogueText)->void:
 	#set name 
 	#set audio 15:30
-	var camera=get_viewport().get_camera_2d()  #or 3d or use a canvas instead if control node
-	if camera and i.camera_position!=Vector2(999.999,999.999):
-		var camera_tween:Tween=create_tween().set_trans(Tween.TRANS_SINE)
-		camera_tween.tween_property(camera,"global_position",i.camera_position,i.camera_transition_time)
+	#var camera=get_viewport().get_camera_2d()  #or 3d or use a canvas instead if control node
+	#if camera and i.camera_position!=Vector2(999.999,999.999):
+		#var camera_tween:Tween=create_tween().set_trans(Tween.TRANS_SINE)
+		#camera_tween.tween_property(camera,"global_position",i.camera_position,i.camera_transition_time)
 		
 	if !i.speaker_img:
 		$HBoxContainer/SpeakerParent.visible=false
@@ -154,7 +154,7 @@ func _text_resource(i:DialogueText)->void:
 	var character_timer:float=0.0
 	
 	while  DialogueLabel.visible_characters<total_characters:
-		if Input.is_action_just_pressed("ui_cancel"):
+		if Input.is_action_just_pressed("ui_x"):
 			DialogueLabel.visible_characters=total_characters
 			break
 			
@@ -180,9 +180,10 @@ func _text_resource(i:DialogueText)->void:
 	while true:
 		await get_tree().process_frame
 		if DialogueLabel.visible_characters==total_characters:
-			if Input.is_action_just_pressed("ui_accept"):
+			if Input.is_action_just_pressed("ui_z") or Input.is_action_just_pressed("ui_accept"):
 				current_dialogue_item+=1
 				next_item=true
+
 #usato nel bbc code nel richtext label per togliere i []
 func _text_without_square_brackets(text:String)->String:
 	var result:String=""
