@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://x5ypxv4pblio"]
+[gd_scene load_steps=15 format=3 uid="uid://x5ypxv4pblio"]
 
 [ext_resource type="Texture2D" uid="uid://c022rs1aahi68" path="res://icon.svg" id="1_fvhl5"]
 [ext_resource type="PackedScene" uid="uid://chs8mqeo1oy0b" path="res://character_body_2d.tscn" id="1_iihks"]
@@ -54,10 +54,30 @@ metadata/_custom_type_script = "uid://djbemgb3jorfh"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skr2o"]
 size = Vector2(108, 84)
 
+[sub_resource type="Resource" id="Resource_skr2o"]
+script = ExtResource("5_kf8s6")
+speaker_name = ""
+speaker_img_Hframes = 1
+speaker_img_rest_frame = 0
+text = "rhjgdjdjfgjdfgjgj"
+text_speed = 18.0
+text_volume_db = 0
+text_volume_pitch_min = 0.85
+text_volume_pitch_max = 1.15
+camera_position = Vector2(999.999, 999.999)
+camera_transition_time = 1.0
+metadata/_custom_type_script = "uid://6i72ifhxrr0o"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_venro"]
+size = Vector2(175, 170)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_iihks")]
 position = Vector2(448, 384)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(123, -66)
 
 [node name="Npc" type="StaticBody2D" parent="."]
 position = Vector2(806, 382)
@@ -72,12 +92,16 @@ position = Vector2(5, -34.4375)
 shape = SubResource("RectangleShape2D_8l7fd")
 debug_color = Color(1, 0.227451, 0, 0.419608)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(571, 318)
-
 [node name="DialogueArea2D" parent="." instance=ExtResource("3_dfp5p")]
 dialogue = Array[ExtResource("4_640hd")]([SubResource("Resource_sbffi"), SubResource("Resource_k3alg"), SubResource("Resource_kf8s6")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueArea2D"]
 position = Vector2(708, 345)
 shape = SubResource("RectangleShape2D_skr2o")
+
+[node name="DialogueArea2D2" parent="." instance=ExtResource("3_dfp5p")]
+dialogue = Array[ExtResource("4_640hd")]([SubResource("Resource_skr2o")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueArea2D2"]
+position = Vector2(1365, 811)
+shape = SubResource("RectangleShape2D_venro")

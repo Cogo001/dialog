@@ -12,6 +12,7 @@ var next_item:bool=true
 
 var player_node:CharacterBody2D # or 3d
 
+signal dialogue_closed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible=false
@@ -29,6 +30,7 @@ func _process(_delta:float)->void:
 				player_node=i
 			return
 		player_node.can_move=true
+		emit_signal("dialogue_closed")# new 
 		queue_free()
 		return 
 	
